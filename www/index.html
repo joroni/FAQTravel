@@ -50,17 +50,14 @@
 		<div id="main" data-role="page">
 			<div data-role="header" data-position="fixed" data-theme="b" id="header"  data-tap-toggle="false">        
 				<!-- the coca-cola logo -->
-				<div class="page-header" id="titlebar"></div>
+				<!--<div class="page-header" id="titlebar"></div>-->
+                <h2 class="ui-title" role="heading" aria-level="1"><a title="Travel FAQ" href="demos" class="ui-link"><img alt="Travel FAQ" class="app-logo" src="images/logo.png"></a></h2>  
 				<a class="nav-icon" onclick="appUI.leftHeaderButtonClick()" data-icon="grid" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
 				<a class="nav-icon" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
 				
 				
 				<!-- the bar below the logo -->
-				<div class="ui-grid-b" style="height:40px;">
-					<div class="ui-block-a"></div>
-					<div class="ui-block-b" style="text-align: center;"><div style="margin-top:15px;">Travel FAQ</div></div>
-					<div class="ui-block-c" align="right"></div>
-				</div>                   
+				                
 			</div>
 			
 			<!-- content area, dynamic -->
@@ -130,7 +127,7 @@
 				<div data-role="header" data-theme="b">
 					<a class="nav-icon" href="#listPanel" data-icon="arrow-l" data-iconpos="notext">Close</a>
 					<a class="nav-icon" href="#" onclick="appUI.gotoCurrentLocation();" data-icon="location" data-iconpos="notext">Current Location</a>
-					<h4>Countries</h4>        					
+					<h4>Regions</h4>        					
 				</div>  
                 <div id="listFilter" style="display:none;padding:0px;margin:0px;"></div>
 				<div class="country-list-holder-portrait" id="listContainer">
