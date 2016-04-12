@@ -125,7 +125,7 @@ appUI.arrangeScreenLayout = function() {
 appUI.switchToLandscape = function() {
 	$("#listPanelLandscape").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-location");
-	$("#leftHeaderButton").removeClass("ui-icon-grid");
+	$("#leftHeaderButton").removeClass("ui-icon-bars");
 	$("#listPanelLandscapeHolder").css("width","30%");
 	$("#contentHolder").css("width","70%");	
 	$("#listPanelLandscapeHolder").show();
@@ -136,7 +136,7 @@ appUI.switchToLandscape = function() {
 
 appUI.switchToPortrait = function() {
 	$("#listPanel").append($("#listContainer").detach());
-	$("#leftHeaderButton").addClass("ui-icon-grid");
+	$("#leftHeaderButton").addClass("ui-icon-bars");
 	$("#leftHeaderButton").removeClass("ui-icon-location");
 	$("#listPanelLandscapeHolder").hide();
 	$("#listPanelLandscapeHolder").css("width","0%");
@@ -255,7 +255,7 @@ appUI.initiateDataUpdate = function() {
 
 	$("#updateProgressDialog").popup("open");
 }
-
+/*
 appUI.downloadFlags = function(finishCallback) {
 	
 	var folder = config.localImageFolderPath;
@@ -329,7 +329,7 @@ appUI.downloadFlags = function(finishCallback) {
 		if (finishCallback) finishCallback();
 	}
 }
-	
+	*/
 appUI.closeMenu = function() {
 	$("#optionsPanel").panel("close");
 }
@@ -350,7 +350,8 @@ appUI.populateCountriesAll = function() {
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
-				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();				
+			//	var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();			
+				var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();		
 				if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
 				}
@@ -423,7 +424,9 @@ appUI.populateCountryDetails = function(countryCode) {
 			if (pf && pf=="Android") mapShowURI = "geo:0,0?q=" + config.mapCoords1Key;
 			if (pf && pf=="Android") mapDirURI = "https://maps.google.com/?q=" + config.mapCoords2Key + "+to+" + config.mapCoords1Key;
 
-			var imgPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+			//var imgPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+			
+			var imgPath = config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
 			
 			if (!localFileExists(imgPath)) {				
 				imgPath = config.defaultIconPath;

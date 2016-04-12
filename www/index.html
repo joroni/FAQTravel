@@ -37,7 +37,7 @@
         <title>Travel FAQ</title>
 
         <link rel="stylesheet" href="jquery.mobile.theme-1.4.2.min.css" type="text/css"/>
-         <link rel="stylesheet" href="css/custom.css" type="text/css"/>
+         
         <link rel="stylesheet" href="css/themes/CocaColaRed.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" type="text/css"/>
         <link rel="stylesheet" href="jquery.mobile.structure-1.4.2.min.css" type="text/css"/>
@@ -51,10 +51,11 @@
 			<div data-role="header" data-position="fixed" data-theme="b" id="header"  data-tap-toggle="false">        
 				<!-- the coca-cola logo -->
 				<!--<div class="page-header" id="titlebar"></div>-->
-                <h2 class="ui-title" role="heading" aria-level="1"><a title="Travel FAQ" href="demos" class="ui-link"><img alt="Travel FAQ" class="app-logo" src="images/logo.png"></a></h2>  
-				<a class="nav-icon" onclick="appUI.leftHeaderButtonClick()" data-icon="grid" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
-				<a class="nav-icon" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
-				
+                <h2 class="ui-title" role="heading" aria-level="1"><a title="Travel FAQ" href="#" class="ui-link"><img alt="Travel FAQ" class="app-logo" src="images/logo.png"></a></h2>  
+                <div class="ui-navbar">
+				<a class="nav-icon ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all" onclick="appUI.leftHeaderButtonClick()" data-icon="bars" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
+				<a class="nav-icon ui-link ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
+				</div>
 				
 				<!-- the bar below the logo -->
 				                
@@ -115,8 +116,8 @@
 				</div>
 				<div data-role="content" class="options-panel-content">
 					<ul data-role="listview" id="popupMenuItems">
-						<li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu()" href="javascript:appUI.initiateDataUpdate();">Update data from server...</a></li>            
-						<li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu();appUI.popAbout();" href="#">About...</a></li>
+						<li data-icon="true"><a class="nav-icon ui-btn ui-shadow  ui-btn-icon-right ui-icon-refresh" data-transition="flip" data-icon="refresh"  onClick="appUI.closeMenu()" href="javascript:appUI.initiateDataUpdate();">Update data</a></li>
+						<li data-icon="true"><a class="nav-icon ui-btn ui-shadow ui-btn-icon-right ui-icon-info"" data-transition="flip" data-icon="info"  onClick="appUI.closeMenu();appUI.popAbout();" href="#">About</a></li>
 						<!-- <li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu();appUI.confirmExit();" href="#">Exit...</a></li> -->
 					</ul>
 				</div>         
@@ -131,7 +132,7 @@
 				</div>  
                 <div id="listFilter" style="display:none;padding:0px;margin:0px;"></div>
 				<div class="country-list-holder-portrait" id="listContainer">
-					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px;margin-right:5px;">
+					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px; margin-right:0px;">
 					</ul>            
 				</div>      
 			</div>              
@@ -161,8 +162,8 @@
 			</div>    
 			<center>        	
 	            <h2 style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="appName">Travel FAQ</h2>
-				<div style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="aboutVersion">Version 1.0a</div>
-				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">&copy; Copyright 2014</div>
+				<div style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="aboutVersion">Version 2.0</div>
+				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">&copy; Copyright 2016</div>
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;font-weight:bold;">The Coca-Cola Company</div>            
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">All rights reserved</div>            
 				<a href="#" data-role="button" onclick="$('#aboutDialog').popup('close');appUI.blocked=false;" style="width:80px;" >OK</a>

@@ -72,6 +72,8 @@
 	
 }
 
+
+
 .footer-text {
 	color:#ddd;
 	text-shadow:none;
@@ -86,6 +88,15 @@
     display: block;
     position: relative;
 }
+
+#main {
+	background-image:url(../images/background.png); 
+	padding:0px;
+	background-position:center;
+	background-size:cover;
+	border: none;
+	background-color:rgba(204,0,0,1);
+}
 .ui-listview > li {
     border-bottom: 1px solid #dfdfdf;
 }
@@ -98,9 +109,15 @@
 
 .head-nav-buttons {
 	position:fixed;
-	top:20p !important;
+	top:20px !important;
 	margin-top:20px !important;
-	border:none;
+	/*border:0;*/
+}
+
+
+.ui-navbar a {
+    max-width: 100%;
+    top: 25px !important;
 }
 
 #navbar {
@@ -119,7 +136,7 @@
 /**************/
 .ui-listview > .ui-li-divider {
     padding-left: 0.5em;
-	background-color:rgba(239,24,33,1) !important;
+	background-color:rgba(239,24,33,0.9) !important;
 	color:#eee;
 	font-size:1.2em;
 	text-shadow:0  1px  0  #333; 
@@ -158,9 +175,9 @@
 	
 	
 }
-.nav-icon {
-	border:0px !important;
-}
+/*.nav-icon {
+	border:2px !important;
+}*/
 .app-nav {
     position: fixed;
     top: 18px;
@@ -202,6 +219,7 @@ img.app-logo {
 
 .options-panel-content {
 	margin: 0px 0px 0px 0px;
+	padding:0;
 }
 
 .footer-text {
@@ -256,14 +274,7 @@ img.app-logo {
 	padding-top:30px;
 }
 
-.content-area {
-	background-image:url(../images/background.png); 
-	padding:0px;
-	background-position:center;
-	background-size:cover;
-	border: none;
-	background-color:rgba(204,0,0,1);
-}
+
 
 .ui-bar-b, .ui-page-theme-b .ui-bar-inherit, html .ui-bar-b .ui-bar-inherit, html .ui-body-b .ui-bar-inherit, html body .ui-group-theme-b .ui-bar-inherit {
     color: #ffffff;
