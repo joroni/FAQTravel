@@ -1,15 +1,29 @@
 /**
-* Author,email :     Aldrin Rasdas , arasdas@coca-cola.com
-* Date Create  :     April, 2014
-* Description  :     Contains methods/functions that deal mainly with User Interface
-*
-* REVISION HISTORY
-*
-* Author,email :
-* Date Revised :
-* Description  :
-*
-**/
+ * Author,email :     Aldrin Rasdas , arasdas@coca-cola.com
+ * Date Create  :     April, 2014
+ * Description  :     Contains methods/functions that deal mainly remote data
+ *
+ * REVISION HISTORY
+ *
+ * Author,email :	Raymund Niconi , niconi@coca-cola.com
+ * Date Revised :	April, 2016
+ * Description  :	Contains methods/functions that deal mainly remote data, UI enhancements and transitions
+ *
+ **/
+ 
+ 
+ 
+ /** 
+* @param {Number} degree - UIInterfaceOrientationPortrait: 0, UIInterfaceOrientationLandscapeRight: 90, UIInterfaceOrientationLandscapeLeft: -90, UIInterfaceOrientationPortraitUpsideDown: 180
+* @returns {Boolean} Indicating if rotation should be allowed.
+*/
+function shouldRotateToOrientation(degrees) {
+     return false;
+}
+
+
+
+
 var appUI = new Object();
 
 appUI.blocked = false;
@@ -64,7 +78,7 @@ appUI.setupDetailsHolder = function() {
 	if (config.tabletMode) {
 		html += ('<ul data-role="listview" data-inset="true" data-theme="b">');
 		for (var i in config.detailLabels) {
-			html+='<li data-role="list-divider">';
+			html+='<li data-role="list-divider" class="ul-li-divider">';
 			html+= '<div class="detail-header"><img src="images/icons/' + config.detailLabels[i].icon + '" class="detail-icon">' + config.detailLabels[i].text + '</div>';
 			html+='</li>';
 			
@@ -566,10 +580,15 @@ appUI.closeSplashScreen = function() {
 	}	
 	
 	if (config.tabletMode) {
-		appUI.unfixOrientation();
+		appUI.fixPortrait();
 	} else {
 		appUI.fixPortrait();
 	}
+	/*if (config.tabletMode) {
+		appUI.unfixOrientation();
+	} else {
+		appUI.fixPortrait();
+	}*/
 }
 
 appUI.fixPortrait = function() {
@@ -578,17 +597,17 @@ appUI.fixPortrait = function() {
 	} catch (err) {}			
 }
 
-appUI.fixLandscape = function() {
+/*appUI.fixLandscape = function() {
 	try {
 		window.plugins.orientationLock.lock("landscape");
 	} catch (err) {}			
 }
-
-appUI.unfixOrientation = function() {
+*/
+/*appUI.unfixOrientation = function() {
 	try {		
 		window.plugins.orientationLock.unlock();
 	} catch (err) {}
-}
+}*/
 
 
 appUI.setUserScreen = function() {
