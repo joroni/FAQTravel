@@ -55,6 +55,7 @@ appUI.initialize = function() {
 	$( "#exitDialog").enhanceWithin().popup({history:false});
 	$( "#exitDialog" ).popup('close');	
 	
+	
 	$( "#appName").html(config.appName);
 	$( "#aboutVersion").html("Version " + config.appInternalVersion);
     
@@ -149,6 +150,7 @@ appUI.switchToLandscape = function() {
 }
 
 appUI.switchToPortrait = function() {
+	$( "#allCountries li").hide();
 	$("#listPanel").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-bars");
 	$("#leftHeaderButton").removeClass("ui-icon-location");
@@ -269,7 +271,7 @@ appUI.initiateDataUpdate = function() {
 
 	$("#updateProgressDialog").popup("open");
 }
-/*
+
 appUI.downloadFlags = function(finishCallback) {
 	
 	var folder = config.localImageFolderPath;
@@ -343,7 +345,7 @@ appUI.downloadFlags = function(finishCallback) {
 		if (finishCallback) finishCallback();
 	}
 }
-	*/
+	
 appUI.closeMenu = function() {
 	$("#optionsPanel").panel("close");
 }
@@ -490,9 +492,9 @@ appUI.populateCountryDetails = function(countryCode) {
 					}
 					
 					officeLoc +='<div class="ui-show-map-container">';
-					officeLoc +='<a href="#" onclick="openExtLink(\'' + mapLink + '\')">[Show Map]</a>';
+					officeLoc +='<a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" onclick="openExtLink(\'' + mapLink + '\')">Show Map</a>';
 					if (mapDirLink) {
-						officeLoc +='&nbsp;&nbsp;&nbsp;<a href="#" onclick="openExtLink(\'' +  mapDirLink + '\')">[Get Directions]</a>';
+						officeLoc +='&nbsp;&nbsp;&nbsp;<a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation" onclick="openExtLink(\'' +  mapDirLink + '\')">Get Directions</a>';
 					}
 					officeLoc +='</div>';
 				}	
