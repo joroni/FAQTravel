@@ -419,6 +419,10 @@ a {
 
 /************* CUSTOM ********/
 
+.ui-btn-up-b {
+		background-color:rgba(244, 0, 9, 0.9) !important;
+	}	
+	
 ul.jqm-list li {
 	list-style-type:none;
 	margin:0px;
