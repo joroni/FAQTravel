@@ -50,10 +50,10 @@ config.mapCoords1Key = '<latlng_1>';
 config.mapCoords2Key = '<latlng_2>';
 
 
-//config.defaultIconPath = 'images/icons/default.png';
 config.defaultIconPath = 'images/icons/default.png';
-//config.localImageFolderPath = 'flags';
-config.localImageFolderPath = 'images/icons/flags';
+//config.defaultIconPath = 'images/icons/default.png';
+config.localImageFolderPath = 'flags';
+//config.localImageFolderPath = 'images/icons/flags';
 config.fileSystemRootFolder = '';
 
 config.detailLabels = [

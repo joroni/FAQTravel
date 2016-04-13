@@ -366,8 +366,8 @@ appUI.populateCountriesAll = function() {
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
-			//	var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();			
-				var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();		
+				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();			
+			//	var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();		
 				if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
 				}
@@ -440,9 +440,9 @@ appUI.populateCountryDetails = function(countryCode) {
 			if (pf && pf=="Android") mapShowURI = "geo:0,0?q=" + config.mapCoords1Key;
 			if (pf && pf=="Android") mapDirURI = "https://maps.google.com/?q=" + config.mapCoords2Key + "+to+" + config.mapCoords1Key;
 
-			//var imgPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+			var imgPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
 			
-			var imgPath = config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+			//var imgPath = config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
 			
 			if (!localFileExists(imgPath)) {				
 				imgPath = config.defaultIconPath;
