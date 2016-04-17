@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ko.travelfaq" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Travel FAQ</name>
+<widget id="com.ko.travelfaq" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Travel FAQ 2.1</name>
     <description>TCCC Travel FAQ app</description>
     <author email="" href="http://phonegap.com">GSS Manila COE</author>
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="3.4.0" />
+   
     <preference name="orientation" value="portrait" />
+	 <preference name="phonegap-version" value="3.4.0" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
 	<preference name="DisallowOverscroll" value="true"/>
     <preference name="prerendered-icon" value="true" />
-    <preference name="stay-in-webview" value="false" />
+    <preference name="stay-in-webview" value="true" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
