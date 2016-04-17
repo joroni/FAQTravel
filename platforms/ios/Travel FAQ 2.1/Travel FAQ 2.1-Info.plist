@@ -24,7 +24,7 @@
     <key>CFBundleIcons~ipad</key>
     <dict/>
     <key>CFBundleIdentifier</key>
-    <string>com.ko.travelfaq</string>
+    <string>com.phonegap.example</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -32,11 +32,11 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>2.1.0</string>
+    <string>2.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleVersion</key>
-    <string>2.1.0</string>
+    <string>2.0.0</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>MKDirectionsApplicationSupportedModes</key>
@@ -54,8 +54,14 @@
     </array>
     <key>NSAppTransportSecurity</key>
     <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>icokecontent.chinacloudapp</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
+      </dict>
     </dict>
     <key>NSMainNibFile~ipad</key>
     <string/>

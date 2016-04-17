@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.ko.travelfaq;
+package com.phonegap.example;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

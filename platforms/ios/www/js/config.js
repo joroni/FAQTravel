@@ -22,8 +22,8 @@ config.checkTabletMode = function() {
 	}
 }
 
-config.appTitle = "Travel FAQ";
-config.appInternalVersion = "1.1a";
+config.appTitle = "Travel FAQ2";
+config.appInternalVersion = "2.1.0";
 config.tabletMode = config.checkTabletMode();//config.getDeviceType();
 config.defaultCountryCode = 'CN';
 config.updateAvailableMessage = 'New version of data is available for download.\n\nKindly sync with server to get the latest Travel FAQ data.';
@@ -38,7 +38,7 @@ config.localDBCountryTable = 'country_detail';
 config.remoteServerAddress = "http://icokecontent.chinacloudapp.cn/store/travelfaq/";
 config.remoteDataFileName = "TravelFAQData.xml";
 config.remoteDataFlagsFolder = "flags";
-config.remoteConnectTimeout = 5000;
+config.remoteConnectTimeout = 7000;
 
 config.geoLatSearchKey = '<latitude>';
 config.geoLngSearchKey = '<longitude>';
@@ -64,5 +64,5 @@ config.detailLabels = [
 	
 	
 config.fixCountryFilter = false;
-config.locationCoarseTimeout = 15000;
+config.locationCoarseTimeout = 20000;
 config.geoJSONCountriesFile = "countries.geojson";
