@@ -53,6 +53,23 @@ height:30px;
     position: relative;
 }
 
+
+/**************/
+.ui-listview > .ui-li-divider, .ui-li-divider.ui-bar-inherit.ui-first-child {
+    padding-left: 0.5em;
+	background-color:rgba(239,24,33,1) !important;
+	color:#eee;
+	font-size:1.2em;
+	text-shadow:0  1px  0  #333; 
+}
+.inlineIcon {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+/**************/
+
 .page-header {
     background-image: url("../images/tfq-logo.svg");
     background-position: center center;
