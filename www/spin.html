@@ -25,10 +25,16 @@ function rotateAnimation(el,speed){
 	document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
 }
 </script>
+<style>
+#img1 {
+	width:30px;
+	height:30px;
+}
+</style>
 </head>
 <body>
-<img id="img1" src="cog1.png" alt="cog1">
+<img id="img1" src="images\loader.svg" alt="cog1">
 <script>rotateAnimation("img1",30);</script>
-<h2 style="width:200px;" id="status"></h2>
+<h2 style="width:10px;" id="status"></h2>
 </body>  
 </html>
