@@ -14,7 +14,7 @@
 
 
 $(document).ready(function(){ 
-	$("ul.ui-listview li").addClass('hidden'); 
+	$(".ui-listview > li").addClass('hidden'); 
 	appUI.populateCountriesAll = function() {
 	localStore.getData("SELECT *", null, null, function(localData) {			
 		if (localData.length>0) {
@@ -31,6 +31,7 @@ $(document).ready(function(){
 				var a = document.createElement("a");
 				var title = document.createElement("span");
 				var icon = document.createElement("img");
+				var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
@@ -75,9 +76,10 @@ $(document).ready(function(){
 						
 			list.listview({
 				autodividersSelector: function(li) {
-					
+					var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
 					return $(li).attr('region');
-					//$('.ui-listview .ui-li-divider').prepend(ic);
+					
+					$('.ui-listview > .ui-li-divider').prepend(ic);
 					
 					
 				}
@@ -99,16 +101,16 @@ $(document).ready(function(){
 $(document).on("pagecreate", "#main", function () {
 	
 	var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
-    $(".ui-li-divider").prepend(ic);
+    $(".ui-listview > .ui-li-divider").prepend(ic);
 	//alert(ic);
 	
 });
 $(document).on("click", ".collapseExpand", function () {
     var collapseAll = this.id == "btnCollapse";
     if (collapseAll) {
-        $(".ui-li-divider .ui-icon-minus").click();
+        $(".ui-listview > .ui-li-divider .ui-icon-minus").click();
     } else {
-        $(".ui-li-divider .ui-icon-plus").click();
+        $(".ui-listview > .ui-li-divider .ui-icon-plus").click();
     }
 });
 
@@ -116,10 +118,10 @@ $(document).on("click", ".collapseExpand", function () {
 
 
 
-$(document).on("click", '.ui-li-divider', function (e) {
+$(document).on("click", '.ui-listview > .ui-li-divider', function (e) {
     var IsCollapsed = false;
     var TheDivider = $(this);
-    var li = TheDivider.next(':not(.ui-li-divider)');
+    var li = TheDivider.next(':not(.ui-listview > .ui-li-divider)');
     while (li.length > 0) {
         IsCollapsed = li.css('display') == 'none';
         var UseAnimation = $("#chkAnim").prop("checked");
