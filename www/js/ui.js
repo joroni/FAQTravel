@@ -1,29 +1,15 @@
 /**
- * Author,email :     Aldrin Rasdas , arasdas@coca-cola.com
- * Date Create  :     April, 2014
- * Description  :     Contains methods/functions that deal mainly remote data
- *
- * REVISION HISTORY
- *
- * Author,email :	Raymund Niconi , niconi@coca-cola.com
- * Date Revised :	April, 2016
- * Description  :	Contains methods/functions that deal mainly remote data, UI enhancements and transitions
- *
- **/
- 
- 
- 
- /** 
-* @param {Number} degree - UIInterfaceOrientationPortrait: 0, UIInterfaceOrientationLandscapeRight: 90, UIInterfaceOrientationLandscapeLeft: -90, UIInterfaceOrientationPortraitUpsideDown: 180
-* @returns {Boolean} Indicating if rotation should be allowed.
-*/
-function shouldRotateToOrientation(degrees) {
-     return false;
-}
-
-
-
-
+* Author,email :     Aldrin Rasdas , arasdas@coca-cola.com
+* Date Create  :     April, 2014
+* Description  :     Contains methods/functions that deal mainly with User Interface
+*
+* REVISION HISTORY
+*
+* Author,email :
+* Date Revised :
+* Description  :
+*
+**/
 var appUI = new Object();
 
 appUI.blocked = false;
@@ -31,11 +17,13 @@ appUI.blocked = false;
 appUI.slideCountries = function() {
 	if (appUI.blocked) return;
 	$("#listPanel").panel("toggle");
+	//$('#listPanel').trigger('expand');
 }
 
 appUI.slideOptions = function() {
 	if (appUI.blocked) return;
 	$("#optionsPanel").panel("toggle");
+	//("#optionsPanel").trigger('expand');
 }
 
 appUI.popAbout = function() {
@@ -44,6 +32,9 @@ appUI.popAbout = function() {
 }
 
 appUI.initialize = function() {	
+
+	$(".jqm-navmenu-panel ul").addClass("ui-listview");
+	$(".ui-listview li a").addClass("ui-btn ui-btn-icon-right ui-icon-carat-r");
 	
 	$( "#updateProgressDialog").enhanceWithin().popup({history:false});
 	$( "#updateProgressDialog" ).popup('close');	
@@ -54,7 +45,6 @@ appUI.initialize = function() {
 	
 	$( "#exitDialog").enhanceWithin().popup({history:false});
 	$( "#exitDialog" ).popup('close');	
-	
 	
 	$( "#appName").html(config.appName);
 	$( "#aboutVersion").html("Version " + config.appInternalVersion);
@@ -79,7 +69,7 @@ appUI.setupDetailsHolder = function() {
 	if (config.tabletMode) {
 		html += ('<ul data-role="listview" data-inset="true" data-theme="b">');
 		for (var i in config.detailLabels) {
-			html+='<li data-role="list-divider" class="ul-li-divider">';
+			html+='<li data-role="list-divider">';
 			html+= '<div class="detail-header"><img src="images/icons/' + config.detailLabels[i].icon + '" class="detail-icon">' + config.detailLabels[i].text + '</div>';
 			html+='</li>';
 			
@@ -140,7 +130,7 @@ appUI.arrangeScreenLayout = function() {
 appUI.switchToLandscape = function() {
 	$("#listPanelLandscape").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-location");
-	$("#leftHeaderButton").removeClass("ui-icon-bars");
+	$("#leftHeaderButton").removeClass("ui-icon-grid");
 	$("#listPanelLandscapeHolder").css("width","30%");
 	$("#contentHolder").css("width","70%");	
 	$("#listPanelLandscapeHolder").show();
@@ -150,9 +140,8 @@ appUI.switchToLandscape = function() {
 }
 
 appUI.switchToPortrait = function() {
-	$( "#allCountries li").hide();
 	$("#listPanel").append($("#listContainer").detach());
-	$("#leftHeaderButton").addClass("ui-icon-bars");
+	$("#leftHeaderButton").addClass("ui-icon-grid");
 	$("#leftHeaderButton").removeClass("ui-icon-location");
 	$("#listPanelLandscapeHolder").hide();
 	$("#listPanelLandscapeHolder").css("width","0%");
@@ -207,6 +196,7 @@ appUI.initiateDataUpdate = function() {
 	if (!hasConnection()) {
 		alert('Connection is required.\n\nPlease connect to internet and try again.');
 		return;
+		appUI.setUserScreen(); /* RAYMUND ADDED so user can continue using the app*/
 	}
 	var ajax = new XMLHttpRequest();
 	
@@ -220,7 +210,7 @@ appUI.initiateDataUpdate = function() {
 		appUI.blocked = false;	
 	}
 
-	var afterOpen = function(event, ui) {		
+	 var afterOpen = function(event, ui) {		
 		appUI.blocked = true;
 		$("#updateText").html("Downloading data...");
 		remoteStore.getData( ajax, 
@@ -350,6 +340,8 @@ appUI.closeMenu = function() {
 	$("#optionsPanel").panel("close");
 }
 
+
+
 appUI.populateCountriesAll = function() {
 	localStore.getData("SELECT *", null, null, function(localData) {			
 		if (localData.length>0) {
@@ -366,8 +358,11 @@ appUI.populateCountriesAll = function() {
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
-				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();			
-			//	var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();		
+				//var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();	
+				
+				
+			var imgPath = config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+						
 				if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
 				}
@@ -414,6 +409,22 @@ appUI.clearCountryFilter = function() {
 
 appUI.positionListFilter = function() {
 	if (!config.fixCountryFilter) return;
+	
+		$("#allCountries li.ui-li-divider").show();
+		$("#allCountries li").hide();
+		$("#listFilter").show();
+		$("#listFilter").append($(".ui-filterable").detach());
+		$("#allCountries").css("padding-top","0px")
+		
+		
+	
+	
+	
+}
+
+/*
+appUI.positionListFilter = function() {
+	if (!config.fixCountryFilter) return;
 	if (config.tabletMode && appUI.isLandscape()) {
 		$("#listFilterLS").show();
 		$("#listFilterLS").append($(".ui-filterable").detach());
@@ -423,7 +434,7 @@ appUI.positionListFilter = function() {
 		$("#listFilter").append($(".ui-filterable").detach());
 		$("#allCountries").css("padding-top","0px")
 	}
-}
+}*/
 
 appUI.populateCountryDetails = function(countryCode) {
 	localStore.getData("SELECT *", "code like ?", [countryCode], function(localData) {			
@@ -442,7 +453,7 @@ appUI.populateCountryDetails = function(countryCode) {
 
 			var imgPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
 			
-			//var imgPath = config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+				//var imgPath =  config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
 			
 			if (!localFileExists(imgPath)) {				
 				imgPath = config.defaultIconPath;
@@ -492,9 +503,9 @@ appUI.populateCountryDetails = function(countryCode) {
 					}
 					
 					officeLoc +='<div class="ui-show-map-container">';
-					officeLoc +='<a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" onclick="openExtLink(\'' + mapLink + '\')">Show Map</a>';
+					officeLoc +='<a href="#" onclick="openExtLink(\'' + mapLink + '\')">[Show Map]</a>';
 					if (mapDirLink) {
-						officeLoc +='&nbsp;&nbsp;&nbsp;<a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation" onclick="openExtLink(\'' +  mapDirLink + '\')">Get Directions</a>';
+						officeLoc +='&nbsp;&nbsp;&nbsp;<a href="#" onclick="openExtLink(\'' +  mapDirLink + '\')">[Get Directions]</a>';
 					}
 					officeLoc +='</div>';
 				}	
@@ -582,15 +593,10 @@ appUI.closeSplashScreen = function() {
 	}	
 	
 	if (config.tabletMode) {
-		appUI.fixPortrait();
-	} else {
-		appUI.fixPortrait();
-	}
-	/*if (config.tabletMode) {
 		appUI.unfixOrientation();
 	} else {
 		appUI.fixPortrait();
-	}*/
+	}
 }
 
 appUI.fixPortrait = function() {
@@ -599,17 +605,17 @@ appUI.fixPortrait = function() {
 	} catch (err) {}			
 }
 
-/*appUI.fixLandscape = function() {
+appUI.fixLandscape = function() {
 	try {
 		window.plugins.orientationLock.lock("landscape");
 	} catch (err) {}			
 }
-*/
-/*appUI.unfixOrientation = function() {
+
+appUI.unfixOrientation = function() {
 	try {		
 		window.plugins.orientationLock.unlock();
 	} catch (err) {}
-}*/
+}
 
 
 appUI.setUserScreen = function() {

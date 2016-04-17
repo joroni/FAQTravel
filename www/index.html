@@ -34,10 +34,9 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />        
 		
-        <title>Travel FAQ</title>
+        <title>Travel FAQ 2.0</title>
 
         <link rel="stylesheet" href="jquery.mobile.theme-1.4.2.min.css" type="text/css"/>
-         
         <link rel="stylesheet" href="css/themes/CocaColaRed.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" type="text/css"/>
         <link rel="stylesheet" href="jquery.mobile.structure-1.4.2.min.css" type="text/css"/>
@@ -50,15 +49,17 @@
 		<div id="main" data-role="page">
 			<div data-role="header" data-position="fixed" data-theme="b" id="header"  data-tap-toggle="false">        
 				<!-- the coca-cola logo -->
-				<!--<div class="page-header" id="titlebar"></div>-->
-                <h2 class="ui-title" role="heading" aria-level="1"><a title="Travel FAQ" href="#" class="ui-link"><img alt="Travel FAQ" class="app-logo" src="images/logo.png"></a></h2>  
-                <div class="ui-navbar">
-				<a class="nav-icon ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all" onclick="appUI.leftHeaderButtonClick()" data-icon="bars" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
-				<a class="nav-icon ui-link ui-btn-right ui-btn ui-icon-gear ui-btn-icon-notext ui-shadow ui-corner-all" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
-				</div>
+			  <div class="page-header" id="titlebar"></div>
+				<a class="nav-icon" onclick="appUI.leftHeaderButtonClick()" data-icon="grid" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
+				<a class="nav-icon" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
+				
 				
 				<!-- the bar below the logo -->
-				                
+				<div class="ui-grid-b" style="height:40px;">
+					<div class="ui-block-a"></div>
+					<div class="ui-block-b" style="text-align: center;"><div style="margin-top:0px;"><img src="images/tfq-logo.svg" class="tfq-logo"></div></div>
+					<div class="ui-block-c" align="right"></div>
+				</div>                   
 			</div>
 			
 			<!-- content area, dynamic -->
@@ -73,7 +74,7 @@
                     <div class="ui-block-b detail-area-container" id="contentHolder">        
                         <!-- details area -->    
                         <div class="ui-grid-b ui-bar country-detail-header" id="selected_country_header">
-                            <div class="ui-block-a" style="width:20%;">
+                            <div class="ui-block-a" style="width:45px;">
                                 <div class="country-icon" id="country_flag"></div>
                             </div> 
                             <div class="ui-block-b" style="width:80%">
@@ -108,8 +109,7 @@
 			</div>    
 			<!-- options panel -->
 			<div data-role="panel" id="optionsPanel" data-position="right" data-display="overlay" data-dismissible="true" class="options-panel" data-position-fixed="true">
-            
-				<div data-role="header" data-theme="b" class="ui-navbar" style="height:75px;">            	
+				<div data-role="header" data-theme="b">            	
 					<h4>Options</h4>                
 					<!-- the line below is hidden from UI. it is here just to align the same button to the right -->
 					<a class="nav-icon" href="#optionsPanel" data-icon="arrow-r" data-iconpos="notext" style="display:none;">Options</a>
@@ -117,8 +117,8 @@
 				</div>
 				<div data-role="content" class="options-panel-content">
 					<ul data-role="listview" id="popupMenuItems">
-						<li data-icon="true"><a class="nav-icon ui-btn ui-shadow  ui-btn-icon-right ui-icon-refresh" data-transition="flip" data-icon="refresh"  onClick="appUI.closeMenu()" href="javascript:appUI.initiateDataUpdate();">Update data</a></li>
-						<li data-icon="true"><a class="nav-icon ui-btn ui-shadow ui-btn-icon-right ui-icon-info"" data-transition="flip" data-icon="info"  onClick="appUI.closeMenu();appUI.popAbout();" href="#">About</a></li>
+						<li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu()" href="javascript:appUI.initiateDataUpdate();">Update data from server...</a></li>            
+						<li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu();appUI.popAbout();" href="#">About...</a></li>
 						<!-- <li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu();appUI.confirmExit();" href="#">Exit...</a></li> -->
 					</ul>
 				</div>         
@@ -126,22 +126,15 @@
 			
 			<!-- list panel -->
 			<div data-role="panel" id="listPanel" data-position="left" data-display="overlay" data-dismissible="true" class="options-panel" data-position-fixed="true">
-				
-				          
-				
-                
-                
-                <div data-role="header" data-theme="b" class="ui-navbar">
-                
+				<div data-role="header" data-theme="b">
 					<a class="nav-icon" href="#listPanel" data-icon="arrow-l" data-iconpos="notext">Close</a>
 					<a class="nav-icon" href="#" onclick="appUI.gotoCurrentLocation();" data-icon="location" data-iconpos="notext">Current Location</a>
-					<h4>Regions</h4>        					
+					<h4>Countries</h4>        					
 				</div>  
                 <div id="listFilter" style="display:none;padding:0px;margin:0px;"></div>
 				<div class="country-list-holder-portrait" id="listContainer">
-					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px; margin-right:0px;">
-					</ul>  
-                    </div>          
+					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px;margin-right:5px;">
+					</ul>            
 				</div>      
 			</div>              
 			
@@ -156,8 +149,10 @@
 			<div data-role="header" class="ui-corner-top">
 				<h1>Status</h1>
 			</div>    
-			<center>        	
-				<img src="images/icons/spinner_red.gif" style="height:30px;weight:30px;margin-top:10px;">
+			<center>  
+            <!--      	
+				<img src="images/icons/spinner_red.gif" style="height:30px;weight:30px;margin-top:10px;"> -->
+                <div class="loaderspin"></div>
 				<div style="margin-left:10px;margin-right:10px;" id="updateText">Update in progress. Please wait...</div>
 				<a href="#" data-role="button" style="width:80px;" id="updateCancelBtn">Cancel</a>
 			</center>
@@ -181,8 +176,7 @@
 		<div style="display:none;" class="device-type" id="deviceType">         
 		 
 		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/config.js"></script>
-        <script type="text/javascript" src="js/sidemenu.js"></script>  
+		<script type="text/javascript" src="js/config.js"></script>  
 		<script type="text/javascript" src="js/utils.js"></script>        
 		<script type="text/javascript" src="js/remote_store.js"></script>  
 		<script type="text/javascript" src="js/local_store.js"></script>  
