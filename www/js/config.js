@@ -52,8 +52,9 @@ config.mapCoords2Key = '<latlng_2>';
 
 config.defaultIconPath = 'images/icons/default.png';
 //config.defaultIconPath = 'images/icons/flags/'+ code.toLowerCase() + '.png?' + Math.random();
-config.localImageFolderPathStatic = 'images/icons/flags/'+ code.toLowerCase() + '.png?' + Math.random();
+config.defaultIconPathStatic = 'images/icons/flags/'+ code.toLowerCase() + '.png?';
 config.localImageFolderPath = 'flags';
+config.localImageFolderPathStatic = 'images/icons/flags';
 config.fileSystemRootFolder = '';
 
 
