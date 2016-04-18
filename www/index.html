@@ -34,7 +34,7 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />        
 		
-        <title>Travel FAQ 2.0</title>
+        <title>Travel FAQ 2.1</title>
 
         <link rel="stylesheet" href="jquery.mobile.theme-1.4.2.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/themes/CocaColaRed.min.css" type="text/css"/>
@@ -153,13 +153,15 @@
 				<h1>Status</h1>
 			</div>    
 			<center>  
-            <!--      	
-				<img src="images/icons/spinner_red.gif" style="height:30px;weight:30px;margin-top:10px;"> -->
+                	
+				<img src="images/icons/spinner_red.gif" style="height:30px;weight:30px;margin-top:10px;"> 
                 <div class="loaderspin"></div>
 				<div style="margin-left:10px;margin-right:10px;" id="updateText">Update in progress. Please wait...</div>
 				<a href="#" data-role="button" style="width:80px;" id="updateCancelBtn">Cancel</a>
 			</center>
 		</div>
+        
+        
 		
 		<!-- about popup -->
 		<div data-theme="b" data-role="popup" id="aboutDialog" data-dismissible="false" style="width:250px;">
@@ -168,7 +170,7 @@
 			</div>    
 			<center>        	
 	            <h2 style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="appName">Travel FAQ</h2>
-				<div style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="aboutVersion">Version 2.0</div>
+				<div style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="aboutVersion">Version 2.1</div>
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">&copy; Copyright 2016</div>
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;font-weight:bold;">The Coca-Cola Company</div>            
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">All rights reserved</div>            
@@ -176,16 +178,18 @@
 			</center>
 		</div>  
 		
-		<div style="display:none;" class="device-type" id="deviceType">         
+		<div style="display:none;" class="device-type" id="deviceType" />         
 		 
 		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/config.js"></script>  
+		<script type="text/javascript" src="js/config.js"></script>
+        
+         <script type="text/javascript" src="js/sidemenu.js"></script>    
 		<script type="text/javascript" src="js/utils.js"></script>        
 		<script type="text/javascript" src="js/remote_store.js"></script>  
 		<script type="text/javascript" src="js/local_store.js"></script>  
 		<script type="text/javascript" src="js/geocoding.js"></script>  
 		<script type="text/javascript" src="js/ui.js"></script> 
-        <script type="text/javascript" src="js/sidemenu.js"></script>  
+       
 		<script type="text/javascript" src="js/index.js"></script>
 			 
 		<script type="text/javascript">
