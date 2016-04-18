@@ -355,13 +355,13 @@ appUI.populateCountriesAll = function() {
 				
 				var iconPathStatic = config.localImageFolderPathStatic + '/' + code.toLowerCase() + ".png?" + Math.random();
 							
-				/*if (!localFileExists(iconPath)) {
-					iconPath = config.defaultIconPath;
-				}*/
-				
 				if (!localFileExists(iconPath)) {
-					iconPath = iconPathStatic;
+					iconPath = config.defaultIconPath;
 				}
+				
+			/*	if (!localFileExists(iconPath)) {
+					iconPath = iconPathStatic;
+				}*/
 				
 				icon.src = iconPath;			
 				icon.style.verticalAlign="middle";
