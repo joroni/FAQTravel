@@ -38,8 +38,8 @@ $(document).ready(function(){
 				
 				
 				
-				//var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();
-				var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();						
+				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();
+				//var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();						
 				if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
 				}
