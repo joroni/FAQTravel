@@ -350,19 +350,10 @@ appUI.populateCountriesAll = function() {
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
-				
-				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();	
-				
-				//var iconPathStatic = config.localImageFolderPathStatic + '/' + code.toLowerCase() + ".png?" + Math.random();
-							
+				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();				
 				if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
 				}
-				
-			/*	if (!localFileExists(iconPath)) {
-					iconPath = iconPathStatic;
-				}*/
-				
 				icon.src = iconPath;			
 				icon.style.verticalAlign="middle";
 				icon.style.marginRight="20px";

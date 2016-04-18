@@ -11,7 +11,6 @@
 *
 **/
 
-
 var config = new Object();
 
 config.checkTabletMode = function() {
@@ -23,8 +22,8 @@ config.checkTabletMode = function() {
 	}
 }
 
-config.appTitle = "Travel FAQ2.1";
-config.appInternalVersion = "2.1.0";
+config.appTitle = "Travel FAQ";
+config.appInternalVersion = "1.1a";
 config.tabletMode = config.checkTabletMode();//config.getDeviceType();
 config.defaultCountryCode = 'CN';
 config.updateAvailableMessage = 'New version of data is available for download.\n\nKindly sync with server to get the latest Travel FAQ data.';
@@ -51,12 +50,8 @@ config.mapCoords1Key = '<latlng_1>';
 config.mapCoords2Key = '<latlng_2>';
 
 config.defaultIconPath = 'images/icons/default.png';
-//config.defaultIconPath = 'images/icons/flags/'+ code.toLowerCase() + '.png?' + Math.random();
-//config.defaultIconPathStatic = 'images/icons/flags/'+ code.toLowerCase() + '.png?';
 config.localImageFolderPath = 'flags';
-//config.localImageFolderPathStatic = 'images/icons/flags';
 config.fileSystemRootFolder = '';
-
 
 config.detailLabels = [
 	{text:"Voice Call",icon:"voice.png",id:"voicecall"},
@@ -69,5 +64,5 @@ config.detailLabels = [
 	
 	
 config.fixCountryFilter = false;
-config.locationCoarseTimeout = 20000;
+config.locationCoarseTimeout = 15000;
 config.geoJSONCountriesFile = "countries.geojson";
