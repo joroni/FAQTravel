@@ -7,7 +7,7 @@
 	<!--
       This allows your app to load assets from all *.phongap.com domains
     -->
-	<access origin="http://icokecontent.chinacloudapp.cn" subdomains="true" />
+	<access origin="http://icokecontent.chinacloudapp.cn/store/travelfaq" subdomains="true" />
 	<content src="index.html" />
 	<preference name="permissions" value="none" />
 	<preference name="orientation" value="default" />
@@ -100,6 +100,7 @@
      </platform>	
 	 
     <access origin="*" />
+	<plugin name="cordova-plugin-whitelist" version="1"/>
 	
 	<preference name="SplashScreen" value="screen" />
 	<preference name="SplashScreenDelay" value="100000000" />		

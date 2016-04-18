@@ -353,7 +353,7 @@ appUI.populateCountriesAll = function() {
 				
 				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();	
 				
-				var iconPathStatic = config.localImageFolderPathStatic + '/' + code.toLowerCase() + ".png?" + Math.random();
+				//var iconPathStatic = config.localImageFolderPathStatic + '/' + code.toLowerCase() + ".png?" + Math.random();
 							
 				if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
