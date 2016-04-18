@@ -123,6 +123,7 @@ appUI.arrangeScreenLayout = function() {
 }
 
 appUI.switchToLandscape = function() {
+	
 	$("#listPanelLandscape").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-location");
 	$("#leftHeaderButton").removeClass("ui-icon-grid");
@@ -135,6 +136,7 @@ appUI.switchToLandscape = function() {
 }
 
 appUI.switchToPortrait = function() {
+	
 	$("#listPanel").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-grid");
 	$("#leftHeaderButton").removeClass("ui-icon-location");
@@ -165,7 +167,8 @@ appUI.resizeCountryList = function() {
 appUI.resizeContent = function() {
 	var offset = $("#header").height() + $("#footer").height();
 	$("#content").css("height",($("body").height() - (offset+5)) + "px");
-	$("#details").css("height",($("#content").height() - (70)) + "px");				
+	$("#details").css("height",($("#content").height() - (70)) + "px");	
+				
 }
 
 appUI.checkUpdate = function (){
@@ -350,8 +353,10 @@ appUI.populateCountriesAll = function() {
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
-				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();				
-				if (!localFileExists(iconPath)) {
+				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();
+				
+				//var iconPath =  config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();				
+				if (!localFileExists(iconPath) || localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
 				}
 				icon.src = iconPath;			

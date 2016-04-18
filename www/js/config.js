@@ -23,7 +23,7 @@ config.checkTabletMode = function() {
 }
 
 config.appTitle = "Travel FAQ";
-config.appInternalVersion = "1.1a";
+config.appInternalVersion = "2.1";
 config.tabletMode = config.checkTabletMode();//config.getDeviceType();
 config.defaultCountryCode = 'CN';
 config.updateAvailableMessage = 'New version of data is available for download.\n\nKindly sync with server to get the latest Travel FAQ data.';
@@ -49,9 +49,18 @@ config.nominatimApiURL = 'https://nominatim.openstreetmap.org/reverse?format=jso
 config.mapCoords1Key = '<latlng_1>';
 config.mapCoords2Key = '<latlng_2>';
 
+
+//config.defaultIconPath = 'images/icons/flags/'+ code.toLowerCase() + '.png?' + Math.random();
+//config.defaultIconPathStatic = 'images/icons/flags/'+ code.toLowerCase() + '.png?';
+//config.localImageFolderPathStatic = "images/icons/flags';
+
 config.defaultIconPath = 'images/icons/default.png';
 config.localImageFolderPath = 'flags';
 config.fileSystemRootFolder = '';
+
+
+
+
 
 config.detailLabels = [
 	{text:"Voice Call",icon:"voice.png",id:"voicecall"},

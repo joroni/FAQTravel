@@ -49,17 +49,20 @@
 		<div id="main" data-role="page">
 			<div data-role="header" data-position="fixed" data-theme="b" id="header"  data-tap-toggle="false">        
 				<!-- the coca-cola logo -->
-				<div class="page-header" id="titlebar"></div>
-				<a class="nav-icon" onclick="appUI.leftHeaderButtonClick()" data-icon="grid" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
-				<a class="nav-icon" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
+			 <div class="page-header" id="titlebar"></div>
+             <!--<div class="ui-navbar top-ui-navbar">-->
+				<a class="nav-icon ui-btn ui-btn-left ui-icon-grid ui-btn-icon-notext ui-corner-all" onclick="appUI.leftHeaderButtonClick()" data-icon="grid" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
+				<a class="nav-icon ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all ui-btn-right" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
 				
 				
 				<!-- the bar below the logo -->
-				<div class="ui-grid-b" style="height:40px;">
+				<div class="ui-grid-b" style="height:0px;">
 					<div class="ui-block-a"></div>
-					<div class="ui-block-b" style="text-align: center;"><div style="margin-top:15px;">Travel FAQ</div></div>
+					<div class="ui-block-b" style="text-align: center;"><div style="margin-top:0px;"></div></div>
 					<div class="ui-block-c" align="right"></div>
-				</div>                   
+				</div>  
+                
+                <!--</div>   -->              
 			</div>
 			
 			<!-- content area, dynamic -->
@@ -129,11 +132,11 @@
 				<div data-role="header" data-theme="b">
 					<a class="nav-icon" href="#listPanel" data-icon="arrow-l" data-iconpos="notext">Close</a>
 					<a class="nav-icon" href="#" onclick="appUI.gotoCurrentLocation();" data-icon="location" data-iconpos="notext">Current Location</a>
-					<h4>Countries</h4>        					
+					<h4>Regions</h4>        					
 				</div>  
                 <div id="listFilter" style="display:none;padding:0px;margin:0px;"></div>
 				<div class="country-list-holder-portrait" id="listContainer">
-					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px;margin-right:5px;">
+					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px;margin-right:0px;">
 					</ul>            
 				</div>      
 			</div>              
@@ -163,8 +166,8 @@
 			</div>    
 			<center>        	
 	            <h2 style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="appName">Travel FAQ</h2>
-				<div style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="aboutVersion">Version 1.0a</div>
-				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">&copy; Copyright 2014</div>
+				<div style="margin-left:10px;margin-right:10px;margin-top:10px;font-weight:bold;" id="aboutVersion">Version 2.1</div>
+				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">&copy; Copyright 2016</div>
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;font-weight:bold;">The Coca-Cola Company</div>            
 				<div style="margin-left:10px;margin-right:10px;margin-top:5px;">All rights reserved</div>            
 				<a href="#" data-role="button" onclick="$('#aboutDialog').popup('close');appUI.blocked=false;" style="width:80px;" >OK</a>
@@ -179,7 +182,8 @@
 		<script type="text/javascript" src="js/remote_store.js"></script>  
 		<script type="text/javascript" src="js/local_store.js"></script>  
 		<script type="text/javascript" src="js/geocoding.js"></script>  
-		<script type="text/javascript" src="js/ui.js"></script>  
+		<script type="text/javascript" src="js/ui.js"></script> 
+        <script type="text/javascript" src="js/sidemenu.js"></script>  
 		<script type="text/javascript" src="js/index.js"></script>  
 			 
 		<script type="text/javascript">
