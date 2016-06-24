@@ -1,13 +1,13 @@
 /**
 * Author,email :     Aldrin Rasdas , arasdas@coca-cola.com
 * Date Create  :     April, 2014
-* Description  :     Contains methods/functions that deal mainly with User Interface
+* Description  :     Contains config values (or some variables that set and read by othe JS files
 *
 * REVISION HISTORY
 *
-* Author,email :
-* Date Revised :
-* Description  :
+* Author,email :	John Raymund Niconi, niconi@coca-cola.com
+* Date Revised :	April, 2016
+* Description  :	UI enhancments, geolocation fix, side menu collapsible
 *
 **/
 var appUI = new Object();
@@ -17,11 +17,26 @@ appUI.blocked = false;
 appUI.slideCountries = function() {
 	if (appUI.blocked) return;
 	$("#listPanel").panel("toggle");
+	/*var TheDivider = $('#allCountries a');
+	var li = TheDivider.next(':not(#allCountries a)');
+	li = li.next(':not(#allCountries a)').hide();*/
+	//$("#allCountries li").hide();
+	//(':not(.ui-li-divider)')
+	
+	
+	
+	//$("#allCountries .listDivider").show();
+	
+	
+	
 }
 
 appUI.slideOptions = function() {
 	if (appUI.blocked) return;
 	$("#optionsPanel").panel("toggle");
+	
+	
+	
 }
 
 appUI.popAbout = function() {
@@ -30,6 +45,9 @@ appUI.popAbout = function() {
 }
 
 appUI.initialize = function() {	
+	
+	$( "#updatePopupDialog").enhanceWithin().popup({history:false});
+	$( "#updatePopupDialog" ).popup('close');
 	
 	$( "#updateProgressDialog").enhanceWithin().popup({history:false});
 	$( "#updateProgressDialog" ).popup('close');	
@@ -54,7 +72,12 @@ appUI.initialize = function() {
 	
 	appUI.setupDetailsHolder();
 	
-	appUI.resizeContent();		
+	appUI.resizeContent();	
+	
+			
+	$(function(){
+		   $('select').attr('role-data', 'collapsible');
+		});	
 }
 
 appUI.setupDetailsHolder = function() {
@@ -64,7 +87,7 @@ appUI.setupDetailsHolder = function() {
 	if (config.tabletMode) {
 		html += ('<ul data-role="listview" data-inset="true" data-theme="b">');
 		for (var i in config.detailLabels) {
-			html+='<li data-role="list-divider">';
+			html+='<li data-role="list-divider" data-collapsed="true">';
 			html+= '<div class="detail-header"><img src="images/icons/' + config.detailLabels[i].icon + '" class="detail-icon">' + config.detailLabels[i].text + '</div>';
 			html+='</li>';
 			
@@ -92,10 +115,32 @@ appUI.setupDetailsHolder = function() {
 appUI.leftHeaderButtonClick = function() {
 	if (appUI.isLandscape() && config.tabletMode) {
 		appUI.gotoCurrentLocation();
+		//appUI.collapseList();
 	} else {
 		appUI.slideCountries();
+		//appUI.collapseList();
+		
+	
+		
 	}
 }
+
+/*
+appUI.collapseList =  function() {
+	if ($("#allCountries a").is(":hidden")) {
+		//$("#allCountries a").show();
+		return;
+	}
+}
+*/
+
+appUI.collapseList =  function() {
+	if ($("#allCountries a").is(":hidden")) {
+		//$("#allCountries a").show();
+		return;
+	}
+}
+
 
 appUI.isLandscape = function() {
 	//return true;
@@ -111,32 +156,45 @@ appUI.arrangeScreenLayout = function() {
 		if (appUI.isLandscape()) {
 			//landscape			
 			appUI.switchToLandscape();
+			$("#allCountries a").show();
+			
+			
 		} else {
 			//portrait
 			appUI.switchToPortrait();
+			$("#allCountries a").show();
+			//$("#allCountries li").hide();
 		}
 		
 	} else {
 		appUI.switchToPortrait();
+		$("#allCountries a").show();
+		//$("#allCountries li").hide();
 	}
 	appUI.positionListFilter();	
 }
 
 appUI.switchToLandscape = function() {
-	
+	//$("#status-bar").addClass("hidden");
 	$("#listPanelLandscape").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-location");
 	$("#leftHeaderButton").removeClass("ui-icon-grid");
 	$("#listPanelLandscapeHolder").css("width","30%");
+	
 	$("#contentHolder").css("width","70%");	
 	$("#listPanelLandscapeHolder").show();
 	$("#listPanel").hide();
+	
 	appUI.resizeContent();
 	appUI.resizeCountryList();	
+	//$("#allCountries li").show();
+		
+	
 }
 
 appUI.switchToPortrait = function() {
-	
+	$("#status-bar").show();
+	//alert('sb');
 	$("#listPanel").append($("#listContainer").detach());
 	$("#leftHeaderButton").addClass("ui-icon-grid");
 	$("#leftHeaderButton").removeClass("ui-icon-location");
@@ -144,9 +202,15 @@ appUI.switchToPortrait = function() {
 	$("#listPanelLandscapeHolder").css("width","0%");
 	$("#contentHolder").css("width","100%");
 	$("#listPanel").show();
-	$("#listPanel").panel("close");	
+	$("#listPanel").panel("close");
+	
 	appUI.resizeContent();
-	appUI.resizeCountryList();		
+	appUI.resizeCountryList();
+	//$("#allCountries li").hide();	
+	//$("#allCountries li:not(:first-child)").hide();
+	//$("#allCountries li.next(:first-child)").hide();
+	
+	
 }
 
 appUI.resizeCountryList = function() {
@@ -275,6 +339,7 @@ appUI.downloadFlags = function(finishCallback) {
 					
 			folder = fs.root.toURL() + '/' + parent.name;
 			if (pf=='Android') folder = cordova.file.externalApplicationStorageDirectory + '/' + parent.name ;
+			//if (pf=='Android') folder = cordova.file.applicationStorageDirectory + '/' + parent.name ;
 			
 			localStore.getData("SELECT code", null, null, function(localData) {
 				if (localData.length>0) {
@@ -353,11 +418,18 @@ appUI.populateCountriesAll = function() {
 				icon.style.width = "30px";
 				icon.style.height = "30px";
 				
+				
+				
+				
 				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();
 				
-				//var iconPath =  config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();				
-				if (!localFileExists(iconPath) || localFileExists(iconPath)) {
+				//var iconPathStatic =  config.localImageFolderPath2 + '/' + code.toLowerCase() + ".png?" + Math.random();				
+				//if (!localFileExists(iconPath) || localFileExists(iconPath)) {
+					
+			if (!localFileExists(iconPath)) {
 					iconPath = config.defaultIconPath;
+					/* SIDE BAR'S ICON */
+					//iconPath = iconPathStatic;
 				}
 				icon.src = iconPath;			
 				icon.style.verticalAlign="middle";
@@ -384,12 +456,16 @@ appUI.populateCountriesAll = function() {
 			list.listview({
 				autodividersSelector: function(li) {
 					return $(li).attr('region');
+					//$(li).attr('collapsible');
+					//$("li").hide();
+					
 				}
 			});						
 			
 			appUI.clearCountryFilter();
 			appUI.positionListFilter();						
-			list.listview("refresh");															
+			list.listview("refresh");	
+			//listview.attr("collapsible");															
 			appUI.resizeContent();
 			appUI.resizeCountryList();
 		}				
@@ -405,11 +481,15 @@ appUI.positionListFilter = function() {
 	if (config.tabletMode && appUI.isLandscape()) {
 		$("#listFilterLS").show();
 		$("#listFilterLS").append($(".ui-filterable").detach());
-		$("#allCountries").css("padding-top","20px");				
+		$("#allCountries").css("padding-top","20px");
+		//$("#allCountries li").attr("collapsible");				
 	} else {
 		$("#listFilter").show();
 		$("#listFilter").append($(".ui-filterable").detach());
-		$("#allCountries").css("padding-top","0px")
+		$("#allCountries").css("padding-top","0px");
+		
+		//$("#allCountries li").attr("collapsible");
+		
 	}
 }
 
@@ -430,9 +510,22 @@ appUI.populateCountryDetails = function(countryCode) {
 
 			var imgPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
 			
+			//var iconPath =  config.localImageFolderPath2 + '/' + code.toLowerCase() + ".png?" + Math.random();
+			
+			//var imgPath = config.localImageFolderPath2 + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+			
+			//var imgPath2 = config.localImageFolderPath2 + '/' + countryCode.toLowerCase() + ".png?" + Math.random();
+			
+			
+			
 			if (!localFileExists(imgPath)) {				
+				//imgPath = config.defaultIconPath2;
+				
 				imgPath = config.defaultIconPath;
+				//alert(imgPath);
 			} 
+			
+			
 			
 			$("#selected_country_header").show();
 			
@@ -463,7 +556,7 @@ appUI.populateCountryDetails = function(countryCode) {
 			
 			var officeLoc = '';
 			var locStyle1 = 'border:none;';
-			var locStyle2 = locStyle1 + 'border-bottom:1px solid #c0c0c0;';
+			var locStyle2 = locStyle1 + 'border-bottom:0px solid #c0c0c0;';
 			for (var i in ol) {				
 				var locStyle = i==(ol.length-1) ? locStyle1 : locStyle2;
 				officeLoc += '<div style="' + locStyle + '">' + autoLink(ol[i]);
@@ -476,11 +569,12 @@ appUI.populateCountryDetails = function(countryCode) {
 							mapDirLink = mapDirLink.replace(config.mapCoords2Key, geocoding.currentLocation);
 						}
 					}
-					
+					<!--<button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location">location</button>-->
 					officeLoc +='<div class="ui-show-map-container">';
-					officeLoc +='<a href="#" onclick="openExtLink(\'' + mapLink + '\')">[Show Map]</a>';
+					
+					officeLoc +='<button href="#" class="ui-btn ui-shadow ui-corner-all  ui-btn-icon-left ui-icon-location ui-btn-inline" onclick="openExtLink(\'' + mapLink + '\')">View Map</button>';
 					if (mapDirLink) {
-						officeLoc +='&nbsp;&nbsp;&nbsp;<a href="#" onclick="openExtLink(\'' +  mapDirLink + '\')">[Get Directions]</a>';
+						officeLoc +='&nbsp;&nbsp;&nbsp;<button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation ui-btn-inline" onclick="openExtLink(\'' +  mapDirLink + '\')">Navigate</button>';
 					}
 					officeLoc +='</div>';
 				}	
@@ -489,7 +583,7 @@ appUI.populateCountryDetails = function(countryCode) {
 			
 						
 			//$("#officeloc").html('<div class="detail-content">'+autoLink(localData[0].officeloc)+'</div>');			
-			$("#officeloc").html('<div class="detail-content">'+officeLoc+'</div>');			
+			$("#officeloc").html('<div class="detail-content" style="border: none;">'+officeLoc+'</div>');			
 			$("#kometrics").html('<div class="detail-content">'+autoLink(localData[0].metric)+'</div>');			
 			$("#usefulinfo").html('<div class="detail-content">'+autoLink(localData[0].info)+'</div>');			
 			$("#prefhotel").html('<div class="detail-content">'+autoLink(localData[0].hotel)+'</div>');			
@@ -618,6 +712,7 @@ appUI.setUserScreen = function() {
 }
 
 appUI.gotoCurrentLocation = function() {
+	
 	if (!navigator.geolocation) {
 		return;
 	}
@@ -637,3 +732,5 @@ appUI.gotoCurrentLocation = function() {
 		}
 	);	
 }
+
+

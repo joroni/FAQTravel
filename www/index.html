@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
     Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
@@ -21,9 +22,9 @@
 *
 * REVISION HISTORY
 *
-* Author,email :
-* Date Revised :
-* Description  :
+* Author,email :	Raymund Niiconi , niconi@coca-cola.com
+* Date Revised :	April, 2016
+* Description  :	modified UI, process
 *
 **/
 -->
@@ -31,11 +32,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />        
-		
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />        -->
+		<meta name="viewport" content="initial-scale=1">
         <title>Travel FAQ</title>
-
         <link rel="stylesheet" href="jquery.mobile.theme-1.4.2.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/themes/CocaColaRed.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" type="text/css"/>
@@ -46,11 +46,12 @@
 		
     </head>
     <body>
-		<div id="main" data-role="page">
+		<div id="main" data-role="page" style="padding-bottom:0px !important;">
+       <!-- <div id="status-bar" class="hidden"></div>-->
 			<div data-role="header" data-position="fixed" data-theme="b" id="header"  data-tap-toggle="false">        
 				<!-- the coca-cola logo -->
 			 <div class="page-header" id="titlebar"></div>
-             <!--<div class="ui-navbar top-ui-navbar">-->
+             <div class="ui-navbar top-ui-navbar ui-corner-all">
 				<a class="nav-icon ui-btn ui-btn-left ui-icon-grid ui-btn-icon-notext ui-corner-all" onclick="appUI.leftHeaderButtonClick()" data-icon="grid" data-iconpos="notext" data-direction="reverse" id="leftHeaderButton">Countries</a>
 				<a class="nav-icon ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all ui-btn-right" href="#optionsPanel" data-icon="gear" data-iconpos="notext">Options</a>            
 				
@@ -62,7 +63,7 @@
 					<div class="ui-block-c" align="right"></div>
 				</div>  
                 
-                <!--</div>   -->              
+                </div>               
 			</div>
 			
 			<!-- content area, dynamic -->
@@ -112,16 +113,21 @@
 			</div>    
 			<!-- options panel -->
 			<div data-role="panel" id="optionsPanel" data-position="right" data-display="overlay" data-dismissible="true" class="options-panel" data-position-fixed="true">
+            
 				<div data-role="header" data-theme="b">            	
-					<h4>Options</h4>                
+					<h4>OPTIONS</h4>                
 					<!-- the line below is hidden from UI. it is here just to align the same button to the right -->
-					<a class="nav-icon" href="#optionsPanel" data-icon="arrow-r" data-iconpos="notext" style="display:none;">Options</a>
-					<a class="nav-icon" href="#optionsPanel" data-icon="arrow-r" data-iconpos="notext" data-direction="reverse">Options</a>
+                    <div class="ui-navbar ui-corner-all">
+					<a class="ui-btn ui-btn-left ui-icon-carat-r ui-btn-icon-notext ui-corner-all" href="#optionsPanel" data-icon="carat-r" data-iconpos="notext" data-direction="reverse">Options</a>
+					<a class="nav-icon ui-btn ui-btn-left ui-icon-arrow-r ui-btn-icon-notext ui-corner-all" href="#optionsPanel" data-icon="arrow-r" data-iconpos="notext" data-direction="reverse" style="display:none;">Options</a>
 				</div>
+                </div>
 				<div data-role="content" class="options-panel-content">
+                
+                
 					<ul data-role="listview" id="popupMenuItems">
-						<li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu()" href="javascript:appUI.initiateDataUpdate();">Update data from server...</a></li>            
-						<li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu();appUI.popAbout();" href="#">About...</a></li>
+						<li data-icon="true"><a data-transition="flip" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-right" data-icon="cloud"  onClick="appUI.closeMenu()" href="javascript:appUI.initiateDataUpdate();">Update...</a></li>            
+						<li data-icon="true"><a data-transition="flip" class="ui-btn ui-shadow ui-icon-info ui-btn-icon-right" data-icon="info" onClick="appUI.closeMenu();appUI.popAbout();" href="#">About...</a></li>
 						<!-- <li data-icon="false"><a data-transition="flip" onClick="appUI.closeMenu();appUI.confirmExit();" href="#">Exit...</a></li> -->
 					</ul>
 				</div>         
@@ -130,20 +136,23 @@
 			<!-- list panel -->
 			<div data-role="panel" id="listPanel" data-position="left" data-display="overlay" data-dismissible="true" class="options-panel" data-position-fixed="true">
 				<div data-role="header" data-theme="b">
-					<a class="nav-icon" href="#listPanel" data-icon="arrow-l" data-iconpos="notext">Close</a>
-					<a class="nav-icon" href="#" onclick="appUI.gotoCurrentLocation();" data-icon="location" data-iconpos="notext">Current Location</a>
-					<h4>Regions</h4>        					
+                <h4>REGIONS</h4> 
+                <div class="ui-navbar ui-corner-all">
+					<a class="nav-icon ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-notext ui-corner-all" href="#listPanel" data-icon="carat-l" data-iconpos="notext">Close</a>
+					<a class="nav-icon ui-btn ui-btn-right ui-icon-location ui-btn-icon-notext ui-corner-all" href="#" onclick="appUI.gotoCurrentLocation();" data-icon="location" data-iconpos="notext">Current Location</a>
+                    </div>
+					       					
 				</div>  
                 <div id="listFilter" style="display:none;padding:0px;margin:0px;"></div>
 				<div class="country-list-holder-portrait" id="listContainer">
-					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="false" id="allCountries" style="padding-top:0px;margin-right:0px;">
+					<ul data-role="listview" data-autodividers="true"  data-filter="true" data-inset="true" id="allCountries" style="padding-top:0px;margin-right:0px;">
 					</ul>            
 				</div>      
 			</div>              
 			
 			<div data-role="footer" data-position="fixed" data-theme="b" id="footer" data-tap-toggle="false">
 				<div class="footer-text">INTERNAL USE ONLY</div>
-				<div class="footer-text">&copy; Copyright 2014. The Coca-Cola Company</div>
+				<div class="footer-text">&copy; Copyright 2016. The Coca-Cola Company</div>
 			</div>      
 		</div> 
 
@@ -182,8 +191,9 @@
 		<script type="text/javascript" src="js/remote_store.js"></script>  
 		<script type="text/javascript" src="js/local_store.js"></script>  
 		<script type="text/javascript" src="js/geocoding.js"></script>  
+        
 		<script type="text/javascript" src="js/ui.js"></script> 
-        <script type="text/javascript" src="js/sidemenu.js"></script>  
+        <script type="text/javascript" src="js/sidemenu.js"></script> 
 		<script type="text/javascript" src="js/index.js"></script>  
 			 
 		<script type="text/javascript">

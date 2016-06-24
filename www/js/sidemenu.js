@@ -1,4 +1,3 @@
-// JavaScript Document
 /**
  * Author,email :     Aldrin Rasdas , arasdas@coca-cola.com
  * Date Create  :     April, 2014
@@ -11,117 +10,32 @@
  * Description  :	Contains methods/functions that deal mainly remote data, UI enhancements and transitions
  *
  **/
-
-
-$(document).ready(function(){ 
-	$(".ui-listview > li").addClass('hidden'); 
-	appUI.populateCountriesAll = function() {
-	localStore.getData("SELECT *", null, null, function(localData) {			
-		if (localData.length>0) {
-			var len = localData.length;
-			var list = $("#allCountries");
-			list.empty();
-			for (i=0; i<len; i++) {
-				
-				
-				
-			var code = localData[i].code;
-				var name = localData[i].name;
-				var li = document.createElement("li");
-				var a = document.createElement("a");
-				var title = document.createElement("span");
-				var icon = document.createElement("img");
-				var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
-				icon.style.width = "30px";
-				icon.style.height = "30px";
-				
-				
-				
-				
-				var iconPath = config.fileSystemRootFolder + '/' + config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();
-				//var iconPath = config.localImageFolderPath + '/' + code.toLowerCase() + ".png?" + Math.random();						
-				if (!localFileExists(iconPath)) {
-					iconPath = config.defaultIconPath;
-				}
-				icon.src = iconPath;			
-				icon.style.verticalAlign="middle";
-				icon.style.marginRight="20px";
-				icon.style.marginLeft="5px";
-				
-				title.appendChild(icon);
-				title.appendChild(document.createTextNode(name));
-				
-				a.appendChild(title);
-				a.country = code;
-				$(a).on("click", function() { {
-					$("#listPanel").panel("close");
-					$("#no_country_data").hide();
-					appUI.populateCountryDetails(this.country,true);
-				}});
-				
-				
-				$(li).attr('region', localData[i].region);
-				
-				li.appendChild(a);
-				
-				list.append(li);
-				
-				
-				
-
-			}
-			
-		
-
-						
-			list.listview({
-				autodividersSelector: function(li) {
-					var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
-					return $(li).attr('region');
-					
-					$('.ui-listview > .ui-li-divider').prepend(ic);
-					
-					
-				}
-				
-			});						
-			
-			appUI.clearCountryFilter();
-			appUI.positionListFilter();						
-			list.listview("refresh");
-			list.listview("li");															
-			appUI.resizeContent();
-			appUI.resizeCountryList();
-		}				
-	});		
-}
-	  //header: "h3", collapsible: true, active: false 
-});
+ 
 
 $(document).on("pagecreate", "#main", function () {
+    var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
+    $(".ui-li-divider").prepend(ic);
+	//$("#allCountries li").hide();
 	
-	var ic = '<span class="ui-icon-minus ui-btn-icon-notext inlineIcon"></span>';
-    $(".ui-listview > .ui-li-divider").prepend(ic);
-	//alert(ic);
+	
 	
 });
 $(document).on("click", ".collapseExpand", function () {
     var collapseAll = this.id == "btnCollapse";
     if (collapseAll) {
-        $(".ui-listview > .ui-li-divider .ui-icon-minus").click();
+        $(".ui-li-divider .ui-icon-minus").click();
     } else {
-        $(".ui-listview > .ui-li-divider .ui-icon-plus").click();
+        $(".ui-li-divider .ui-icon-plus").click();
     }
 });
 
 
 
 
-
-$(document).on("click", '.ui-listview > .ui-li-divider', function (e) {
+$(document).on("click", '.ui-li-divider', function (e) {
     var IsCollapsed = false;
     var TheDivider = $(this);
-    var li = TheDivider.next(':not(.ui-listview > .ui-li-divider)');
+    var li = TheDivider.next(':not(.ui-li-divider)');
     while (li.length > 0) {
         IsCollapsed = li.css('display') == 'none';
         var UseAnimation = $("#chkAnim").prop("checked");

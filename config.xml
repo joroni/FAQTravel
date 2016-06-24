@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ko.travelfaq" versionCode="10" version="2.1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ko.travelfaq" versionCode="23" version="2.3.0">
 	<!-- versionCode is optional and Android only -->
-	<name>Travel FAQ 2.1</name>
-	<description>TCCC Travel FAQ app</description>
+	<name>Travel FAQ</name>
+	<description>TCCC Travel FAQ app for iPad</description>
 	<author href="http://icokecontent.chinacloudapp.cn" email="support@chinacloudapp.com">GSS Manila COE</author>
 	<!--
       This allows your app to load assets from all *.phongap.com domains
@@ -14,7 +14,7 @@
 	<preference name="phonegap-version" value="3.4.0" />
 	<preference name="target-device" value="universal" />
 	<preference name="fullscreen" value="true" />
-	<preference name="webviewbounce" value="true" />
+	<preference name="webviewbounce" value="false" />
 	<preference name="prerendered-icon" value="true" />
 	<preference name="stay-in-webview" value="false" />
 	<preference name="ios-statusbarstyle" value="black-opaque" />
