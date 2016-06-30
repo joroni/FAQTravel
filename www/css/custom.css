@@ -90,6 +90,19 @@ img.tfq-logo {
 		
 }
 
+
+#listPanel, #listContainer {
+	
+	background-color: #efefef;
+    
+}
+
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+    color: #333333;
+    text-shadow: 0 1px 0 #f3f3f3;
+	background:#fff;
+}
+
 .detail-content {
 		 border-size:3px !important;
 	}	
